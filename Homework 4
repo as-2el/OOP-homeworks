@@ -1,0 +1,56 @@
+public class Shape
+{
+    public virtual double CalculateArea()
+    {
+        return 0;
+    }
+}
+public class Circle : Shape
+{
+    public double Radius { get; set; }
+
+    public Circle(double Radius)
+    {
+        this.Radius = Radius;
+    }
+    public override double CalculateArea()
+    {
+        return Math.PI * Radius * Radius;
+    }
+}
+public class Rectangular : Shape
+{
+    public double Width { get; set; }
+    public double Height { get; set; }
+
+    public Rectangular(double width, double height)
+    {
+        Width = width;
+        Height = height;
+    }
+
+    public override double CalculateArea()
+    {
+        return Width * Height ;
+    }
+}
+
+public class Program
+{
+    static void Main(string[] args)
+    {
+        List<Shape> shapes = new List<Shape>()
+        {
+            new Circle(5.8),
+            new Rectangular(6, 4)
+        };
+
+        foreach(Shape shape in shapes)
+        {
+            Console.WriteLine($"Type: {shape.GetType().Name} | Area: {shape.CalculateArea()}");
+
+            shape.GetType();
+            Console.WriteLine(shape.CalculateArea());
+        }
+    }
+}
