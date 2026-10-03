@@ -1,0 +1,81 @@
+public class Person
+{
+    public string Name { get; set; }
+    public string Email { get; set; }
+
+    public Person(string  name, string email)
+    {
+        Console.WriteLine("Person constructor");
+        Name = name;
+        Email = email;
+    }
+
+    public void DisplayBasicInfo()
+    {
+        Console.WriteLine($"Name: {Name} | Email: {Email}");
+    }
+}
+public class Student : Person
+{
+    public int StudentID { get; private set; }
+    public double GPA { get; private set; }
+
+    public Student(string name, string email, int StudentID) : base(name, email)
+    {
+        Console.WriteLine("Student constructor");
+        this.StudentID = StudentID;
+    }
+
+    public void SetGPA(double gpa)
+    {
+        GPA = gpa;
+    }
+}
+public class Employee : Person
+{
+    public int EmployeeID { get; private set; }
+    public double Salary { get; private set; }
+
+    public Employee(string name, string email, int EmployeeID) : base(name, email)
+    {
+        Console.WriteLine("Employee constructor");
+        this.EmployeeID = EmployeeID;
+    }
+
+    public void SetSalary(double salary)
+    {
+        Salary = salary;
+    }
+}
+public class Teacher : Employee
+{
+    public string CourseName { get; set; }
+
+    public Teacher(string name, string email, int EmployeeID, string CourseName) : base(name, email, EmployeeID)
+    {
+        Console.WriteLine("Teacher constructor");
+        this.CourseName = CourseName;
+    }
+
+    public void Teach()
+    {
+        Console.WriteLine("Teach..");
+    }
+}
+
+
+  public class Program
+{
+    static void Main(string[] args)
+    {
+        Student student = new Student("Aseel", "aseel@gmail.com", 2235167);
+        Teacher teacher = new Teacher("Sara", "sara@gmail.com", 22882990, "OOP");
+
+        student.DisplayBasicInfo();
+        student.SetGPA(4.8);
+
+        teacher.DisplayBasicInfo();
+        teacher.SetSalary(45000);
+        teacher.Teach();
+    }
+}
