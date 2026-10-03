@@ -1,0 +1,59 @@
+public class Vehicle
+{
+    public string Brand {  get; set; }
+    public int Year { get; set; }
+
+    public Vehicle(string Brand, int year)
+    {
+        this.Brand = Brand;
+        Year = year;
+    }
+
+    public void Start()
+    {
+        Console.WriteLine("Started..");
+    }
+}
+
+public class Car: Vehicle
+{
+    public int NumberOfDoors { get; set; }
+
+    public Car (string Brand, int year, int NumberOfDoors) : base(Brand, year)
+    {
+        this.NumberOfDoors = NumberOfDoors;
+    }
+}
+public class Bus : Vehicle
+{
+    public int Capacity { get; set; }
+
+    public Bus(string Brand, int year, int  Capacity) : base(Brand, year) 
+    {
+        this.Capacity = Capacity;
+    }
+}
+public class Motorcycle : Vehicle
+{
+    public bool HasSidecar { get; set; }
+
+    public Motorcycle(string Brand, int year, bool HasSidecar) : base(Brand, year)
+    {
+        this.HasSidecar = HasSidecar;
+    }
+}
+
+public class Program
+{
+    static void Main(string[] args)
+    {
+        Car car = new Car("TOYOTA", 2018, 4);
+        Bus bus = new Bus("Noah", 2023, 9);
+        Motorcycle motorcycle = new Motorcycle("BM", 2019, false);
+
+        car.Start();
+        bus.Start();
+        motorcycle.Start();
+
+    }
+}
