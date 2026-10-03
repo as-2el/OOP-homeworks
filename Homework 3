@@ -1,64 +1,69 @@
 public class Person
 {
-    public string Name { get; set; }
+public string Name { get; set; }
 
-    public virtual void DisplayInfo()
-    {
-        Console.WriteLine($"Name: {Name}");
-    }
+public virtual void DisplayInfo()
+{
+    Console.WriteLine($"Name: {Name}");
 }
+
+}
+
 public class Student : Person
 {
-    public int StudentID { get; set; }
+public int StudentID { get; set; }
 
-    public override void DisplayInfo()
-    {
-        Console.WriteLine($"Name: {Name} | Sudent Id: {StudentID}");
-    }
+public override void DisplayInfo()
+{
+    Console.WriteLine($"Name: {Name} | Student Id: {StudentID}");
+}
+
 }
 
 public class Employee : Person
 {
-    public double Salary { get; set; }
+public double Salary { get; set; }
 
-    public override void DisplayInfo()
-    {
-        Console.WriteLine($"Name: {Name} | Salary: {Salary}");
-    }
+public override void DisplayInfo()
+{
+    Console.WriteLine($"Name: {Name} | Salary: {Salary}");
+}
+
 }
 
 public class Teacher : Person
 {
-    public string CourseName { get; set; }
+public string CourseName { get; set; }
 
-    public override void DisplayInfo()
-    {
-        Console.WriteLine($"Name: {Name} | Course Name: {CourseName}");
-    }
+public override void DisplayInfo()
+{
+    Console.WriteLine($"Name: {Name} | Course Name: {CourseName}");
+}
+
 }
 
 public class Program
 {
-    static void Main(string[] args)
+static void Main(string[] args)
+{
+List<Person> people = new List<Person>
+{
+new Student(),
+new Employee(),
+new Teacher()
+};
+
+    foreach (Person person in people)
     {
-        List<Person> people = new List<Person>
-        {
-            new Student(),
-            new Employee(),
-            new Teacher()
-        };
-
-        foreach (Person person in people)
-        {
-            Console.WriteLine( person.GetType());
-            person.DisplayInfo();
-            ShowInfo( person );
-
-        }
-        
-        void ShowInfo(Person person)
-        {
-            person.DisplayInfo();
-        }
+        Console.WriteLine(person.GetType().Name);
+        person.DisplayInfo();
+        ShowInfo(person);
     }
+}
+
+static void ShowInfo(Person person)
+{
+    person.DisplayInfo();
+}
+
 }
